@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1" style="margin-left: 520px; font-size: 60px;">
+            <img src="/assets/Bank_logo.jpg" width="120px" height="70px" style="margin-top:-15px; margin-right: 40px;">
+            <b>Bank of HYP</b>
+        </span>
+    </nav>
+    <br>
+    <div style="margin-right: 500px; margin-left: 600px;">
+        <div >
+            <label style="font-size: 25px;"><b>Enter 4-digit password</b></label><br><br>
+            <input type="number" class="form-control" placeholder="Pin"[(ngModel)]="pin" [ngModelOptions]="{standalone:true}"><br><br>
+            <button type="submit" class="btn btn-primary" style="margin-left: 130px;" (click)="pinValidation()">Submit</button>
+        </div>
+        <br>
+        <div *ngIf="amountTag">
+            <label style="font-size: 25px;"><b>Deposit minimum 2000 Rs.</b></label><br><br>
+            <input type="number" class="form-control" placeholder="Amount" [(ngModel)]="amo" [ngModelOptions]="{standalone: true}"><br><br>
+            <button type="submit" class="btn btn-primary" style="margin-left: 130px;" (click)="amountValidation()">Submit</button>
+        </div>
+    </div>
+</body>
+</html>

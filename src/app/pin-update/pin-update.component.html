@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1" style="margin-left: 520px; font-size: 60px;">
+            <img src="/assets/Bank_logo.jpg" width="120px" height="70px" style="margin-top:-15px; margin-right: 40px;">
+            <b>Bank of HYP</b>
+        </span>
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="margin-right: 50px;" routerLink="/">logout</button>
+    </nav>
+    <br>
+    <div style="margin-right: 600px; margin-left: 600px;">
+        <label style="font-size: 25px;"><b>Acc/No</b></label><br><br>
+        <input type="number" class="form-control" placeholder="Acc/No" [(ngModel)]="user.acc_num" [ngModelOptions]="{standalone:true}"><br>
+        <label style="font-size: 25px;"><b>Pin</b></label><br><br>
+        <input type="number" class="form-control" placeholder="Pin" [(ngModel)]="pin" [ngModelOptions]="{standalone:true}"><br>
+        <button type="submit" class="btn btn-primary" style="margin-left: 130px;" (click)="getUser()">GET</button><br><br>
+        <div *ngIf="first_flag">
+            <label style="font-size: 25px;"><b>Enter 4-digit password</b></label><br><br>
+            <input type="number" class="form-control" placeholder="Pin" [(ngModel)]="first_pin" [ngModelOptions]="{standalone:true}"><br><br>
+            <label style="font-size: 25px;"><b>Confirm Password</b></label><br><br>
+            <input type="number" class="form-control" placeholder="Pin" [(ngModel)]="second_pin" [ngModelOptions]="{standalone:true}">
+            <label style="font-size: 15px; color: red;" *ngIf="pin_flag">password not match</label><br><br>
+            <button type="submit" class="btn btn-primary" style="margin-left: 130px;" (click)="passwordVarification()">Submit</button>
+        </div>
+        <br>
+        <div *ngIf="otp_varification">
+            <label style="font-size: 25px;"><b>Please check your email for further process...</b></label><br><br>
+            <input type="number" class="form-control" placeholder="OTP" [(ngModel)]="tempOtp" [ngModelOptions]="{standalone:true}"><br>
+            <button type="submit" class="btn btn-primary" style="margin-left: 130px;" (click)="otpVarifaction()">Verify</button><br><br>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-left: 105px;" *ngIf="update_flag" (click)="updatePin()">UPDATE PIN</button>
+    </div>
+</body>
+</html>

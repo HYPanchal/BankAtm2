@@ -1,0 +1,45 @@
+<html>
+    <head></head>
+    <body>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1" style="margin-left: 520px; font-size: 60px;">
+                <img src="/assets/Bank_logo.jpg" width="120px" height="70px" style="margin-top:-15px; margin-right: 40px;">
+                <b>Bank of HYP</b>
+            </span>
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="margin-right: 50px;" (click)="setnull()">logout</button>
+        </nav>
+        <div style="margin-right: 500px; margin-left: 600px;">
+            <br>
+                <div>
+                    <b><h3>Welcome..{{user.first_name}} {{user.last_name}}</h3></b>
+                </div>
+                <div class="form-group">
+                  <label style="font-size: 30px;">Withdraw Amount</label><br><br>
+                  <button type="button" class="btn btn-outline-primary" id="text" style="margin-left: 80px;" (click)="debitToggle()">Click</button>                
+                </div>
+                <br>
+                <div *ngIf="debitflag">
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 0px;" (click)="fastDebit(200)">200</button><button type="button" class="btn btn-outline-primary" id="text" style="margin-left: 140px;" (click)="fastDebit(500)">500</button><br><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 0px;" (click)="fastDebit(2000)">2000</button><button type="button" class="btn btn-outline-primary" id="text" style="margin-left: 130px;" (click)="fastDebit(5000)">5000</button><br><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 0px;" (click)="fastDebit(10000)">10000</button><button type="button" class="btn btn-outline-primary" id="text" style="margin-left: 122px;" (click)="fastDebit(20000)">20000</button><br><br>
+                    <label style="font-size: 25px;">Other Amount</label><br><br>
+                    <input type="text" class="form-control" placeholder="Amount" style="width: 250px;" [(ngModel)]="debitamount" [ngModelOptions]="{standalone: true}"><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="optionDebit()">Debit</button>                
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 30px;">Diposit Amount</label><br><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="depositToggle()">Click</button>                
+                </div>
+                <br>
+                <div *ngIf="creditflag">
+                    <input type="number" class="form-control" #firstname placeholder="Amount" style="width: 250px;" [(ngModel)]="creditamount" [ngModelOptions]="{standalone: true}"><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="creditAmount()">Credit</button>
+                </div>
+                <br>
+                <div>
+                    <label style="font-size: 30px;">Ceck Transaction History</label><br><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="gotoTranHis()">Click</button>
+                </div>
+        </div>
+    </body>
+</html>
