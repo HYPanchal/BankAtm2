@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './User/User';
 import { Injectable } from '@angular/core';
@@ -14,7 +14,7 @@ export class UserService {
 
   state : Statement [] = [];
 
-  private baseUrl:String = "http://13.53.222.37:8081/api/v2";
+  private baseUrl:String = "http://localhost:8081/api/v2";
 
   constructor(private http:HttpClient) { }
 
@@ -88,6 +88,11 @@ export class UserService {
   getRequest(acc_num : number):Observable<User>
   {
     return this.http.get<User>(`${this.baseUrl}/${acc_num}`);//V2 getRequest
+  }
+
+  accountToAccountRequest(senderAccountNumber : number, reciverAccountNumber : number, transferAmount : number):Observable<HttpResponse<any>>
+  {
+    return this.http.get<any>(`${this.baseUrl}/${senderAccountNumber}/${reciverAccountNumber}/${transferAmount}`);
   }
 
   setAllnull()

@@ -36,6 +36,21 @@
                     <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="creditAmount()">Credit</button>
                 </div>
                 <br>
+                <div class="form-group">
+                    <label style="font-size: 30px;">Account To Account Transfer</label><br><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="newToggle()">Click</button>                
+                </div>
+                <br>
+                <div *ngIf="newFlag">
+                    <input type="number" class="form-control" placeholder="AccountNumber" style="width: 250px;" [(ngModel)]="resiverAccountNumber" [ngModelOptions]="{standalone: true}"><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="verifyAccount()">Verify</button>
+                </div>
+                <br>
+                <div *ngIf="reciverExist">
+                    <input type="number" class="form-control" placeholder="Transfer Amount" style="width: 250px;" [(ngModel)]="transferAmount" [ngModelOptions]="{standalone: true}"><br>
+                    <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="tranferAmountrequest()">Send</button>
+                </div>
+                <br>
                 <div>
                     <label style="font-size: 30px;">Ceck Transaction History</label><br><br>
                     <button type="button" class="btn btn-outline-primary" style="margin-left: 80px;" (click)="gotoTranHis()">Click</button>

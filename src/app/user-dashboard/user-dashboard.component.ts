@@ -17,9 +17,13 @@ export class UserDashboardComponent implements OnInit
 
   debitflag : boolean = false;
   creditflag : boolean = false;
+  newFlag : boolean = false;
+  reciverExist : boolean = false;
   amountVal : boolean = false;
+  resiverAccountNumber !:number;
   debitamount !: number;
   creditamount !: number;
+  transferAmount !: number;
 
   constructor(private service : UserService, private rou : Router){}
 
@@ -62,6 +66,11 @@ export class UserDashboardComponent implements OnInit
   debitToggle()
   {
     this.debitflag =! this.debitflag;
+  }
+
+  newToggle()
+  {
+    this.newFlag =! this.newFlag;
   }
 
   fastDebit(num : number)
@@ -159,6 +168,29 @@ export class UserDashboardComponent implements OnInit
     this.service.user.acc_num = this.user.acc_num;
     console.log("current bal : "+this.user.amount);
     console.log("acc num : "+this.service.user.acc_num);
+  }
+
+  verifyAccount(){
+    this.service.getRequest(this.resiverAccountNumber).subscribe(
+      (response)=>{
+        this.reciverExist =! this.reciverExist;
+      },(error)=>{
+        this.reciverExist = false;
+        alert("The User with id : "+this.resiverAccountNumber+" Dose not exist.");
+      }
+    );
+  }
+
+  tranferAmountrequest(){
+    this.service.accountToAccountRequest(this.user.acc_num, this.resiverAccountNumber, this.transferAmount).subscribe(
+      (response)=>{
+        alert("The Amount : "+this.transferAmount+" has been transfered successfully");
+      },(error)=>{
+        if(error.status == 400){
+          alert("The amount dose not transfer.");
+        }
+      }
+    );
   }
 
   depositToggle()
